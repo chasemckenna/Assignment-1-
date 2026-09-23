@@ -1,0 +1,45 @@
+# Exercise 4: Tax Bracket Determiner
+# Concept: functions returning values, conditionals, modulo, ternary expressions
+
+
+def get_tax_bracket(income):
+    # Return invalid if income is negative
+    if income < 0:
+        return "Invalid income."
+
+    # Determine tax bracket and rate
+    if income < 50000:
+        bracket = "Low (10%)"
+        rate = 0.10
+    elif income < 100000:
+        bracket = "Medium (20%)"
+        rate = 0.20
+    else:
+        bracket = "High (30%)"
+        rate = 0.30
+
+    # Bonus: ternary expression for deduction eligibility
+    # If income is even, add deduction eligibility; otherwise keep standard bracket
+    return bracket + " (Deduction Eligible)" if income % 2 == 0 else bracket
+
+
+def main():
+    income = float(input("What's your annual income? "))
+    bracket = get_tax_bracket(income)
+
+    if bracket == "Invalid income.":
+        print(bracket)
+    else:
+        if "Low (10%)" in bracket:
+            rate = 0.10
+        elif "Medium (20%)" in bracket:
+            rate = 0.20
+        else:
+            rate = 0.30
+
+        estimated_tax = income * rate
+        print(f"Your bracket: {bracket}. Estimated tax: {estimated_tax}")
+
+
+if __name__ == "__main__":
+    main()
