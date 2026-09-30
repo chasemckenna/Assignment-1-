@@ -8,24 +8,16 @@ def get_tax_bracket(income):
     else:
         bracket = "High (30%)"
 
-    # Bonus: ternary - if income is even, add deduction note
-    return bracket + " (Deduction Eligible)" if income % 2 == 0 else bracket
-
-
-def get_tax_rate(income):
-    if income < 50000:
-        return 0.10
-    elif income < 100000:
-        return 0.20
-    else:
-        return 0.30
-
-
 income = float(input("What's your annual income? "))
 bracket = get_tax_bracket(income)
-
+ 
 if income < 0:
     print(bracket)
 else:
-    tax = round(income * get_tax_rate(income), 2)
-    print(f"Your bracket: {bracket}. Estimated tax: {tax}")
+    if income < 50000:
+        rate = 0.10
+    elif income < 100000:
+        rate = 0.20
+    else:
+        rate = 0.30
+    print(f"Your bracket: {bracket}. Estimated tax: {income * rate}")
